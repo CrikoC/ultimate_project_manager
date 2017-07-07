@@ -4,7 +4,9 @@ A wordpress plugin for project management
 Manage you projects with ease! add your partners, assign tasks to them and organize the workflow
 
 
-Work in progress
+> Work in progress
+
+***
 
 ## Pending
 
