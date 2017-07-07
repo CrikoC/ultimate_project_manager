@@ -6,7 +6,7 @@ Manage you projects with ease! add your partners, assign tasks to them and organ
 
 Work in progress
 
-##Pending
+## Pending
 
 1. Custom Theme to be included
 2. Build-in Chat and message service
