@@ -1,0 +1,20 @@
+.modal-dialog {
+    margin-top:50px;
+}
+
+/*------------ GANTT---------------------*/
+
+.project_table {
+    width: auto !important;
+    padding:0px!important;
+}
+.wp_gantt { background-image:url(../images/wp_gantt.png); }
+.task_gantt { background-image:url(../images/task_gantt.png); }
+.mil_gantt { background-image:url(../images/mil_h.png); }
+.del_gantt { background-image:url(../images/del_h.png); }
+
+.wp_gantt,.task_gantt,.mil_gantt,.del_gantt {
+    background-position:center;
+    background-repeat:no-repeat;
+}
+/*---------------------------------------*/
