@@ -11,4 +11,4 @@ Manage you projects with ease! add your partners, assign tasks to them and organ
 ## Pending
 
 1. Custom Theme to be included
-2. Build-in Chat and message service
+2. Notifications
