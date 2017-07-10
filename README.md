@@ -9,7 +9,7 @@ Manage you projects with ease! add your partners, assign tasks to them and organ
 
 2. In the front end there is a custom registration page for the manager and a custom login and profile page for the partners after they were created by the manager. Back-end is restricted to partners.
 
-3. In the back-end, the managee can create new partners and projects. Each project is displayed in a GANTT chart for easy management.
+3. In the back-end, the manager can create new partners and projects. Each project is displayed in a GANTT chart for easy management.
 
 ***
 
