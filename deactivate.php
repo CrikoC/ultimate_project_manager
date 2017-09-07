@@ -23,6 +23,7 @@ function upm_drop_tables() {
     upm_drop_tasks();
     upm_drop_milestones();
     upm_drop_deliverables();
+    upm_drop_noticeboard();
 }
 
 function upm_drop_projects() {
@@ -55,7 +56,14 @@ function upm_drop_milestones() {
 
 function upm_drop_deliverables() {
     global $wpdb;
-    $table_name = $wpdb->prefix."deliverables";
+    $table_name = $wpdb->prefix."upm_deliverables";
+    $sql = "DROP TABLE IF EXISTS $table_name";
+    $wpdb->query($sql);
+}
+
+function upm_drop_noticeboard() {
+    global $wpdb;
+    $table_name = $wpdb->prefix."upm_noticeboard";
     $sql = "DROP TABLE IF EXISTS $table_name";
     $wpdb->query($sql);
 }

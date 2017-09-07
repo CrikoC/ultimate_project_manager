@@ -30,27 +30,27 @@ function upm_create_tables() {
     upm_create_tasks();
     upm_create_milestones();
     upm_create_deliverables();
+    upm_create_noticeboard();
 }
 
 function upm_create_projects() {
     global $wpdb;
 
     $table_name = $wpdb->prefix . "upm_projects";
-    $charset_collate = $wpdb->get_charset_collate();
 
-    $sql = "CREATE TABLE IF NOT EXISTS `". $table_name."` (
-        `id` varchar(250) NOT NULL,
-        `name` varchar(250) CHARACTER SET utf8 NOT NULL,
-        `slug` varchar(250) CHARACTER SET utf8 NOT NULL,
-        `description` TEXT CHARACTER SET utf8 NOT NULL,
-        `manager_id` varchar(250) CHARACTER SET utf8 NOT NULL,
-        `start_date` DATE,
-        `end_date` DATE,
-        `reminder` DATE,
-        `status` varchar(250) CHARACTER SET utf8 NOT NULL,
-        `completed` TINYINT,
-        PRIMARY KEY (`id`)
-    ) $charset_collate; ";
+    $sql = "CREATE TABLE IF NOT EXISTS $table_name (
+        id varchar(250) NOT NULL,
+        name varchar(250) CHARACTER SET utf8 NOT NULL,
+        slug varchar(250) CHARACTER SET utf8 NOT NULL,
+        description TEXT CHARACTER SET utf8 NOT NULL,
+        manager_id varchar(250) CHARACTER SET utf8 NOT NULL,
+        start_date DATE,
+        end_date DATE,
+        reminder DATE,
+        status varchar(250) CHARACTER SET utf8 NOT NULL,
+        completed TINYINT,
+        PRIMARY KEY (id)
+    )";
     
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
@@ -73,7 +73,7 @@ function upm_create_work_packages() {
         `reminder` DATE,
         `status` varchar(250) CHARACTER SET utf8 NOT NULL,
         PRIMARY KEY (`id`)
-    ) $charset_collate; ";
+    )";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
@@ -99,7 +99,7 @@ function upm_create_tasks() {
         `completed` TINYINT,
       
         PRIMARY KEY (`id`)
-    ) $charset_collate; ";
+    )";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
@@ -123,7 +123,7 @@ function upm_create_milestones() {
         `status` varchar(250) CHARACTER SET utf8 NOT NULL,
         `completed` TINYINT,
         PRIMARY KEY (`id`)
-    ) $charset_collate; ";
+    )";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
@@ -147,8 +147,27 @@ function upm_create_deliverables() {
         `status` varchar(250) CHARACTER SET utf8 NOT NULL,
         `completed` TINYINT,
         PRIMARY KEY (`id`)
-    ) $charset_collate; ";
+    )";
 
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta($sql);
+}
+
+function upm_create_noticeboard() {
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . "upm_noticeboard";
+
+    $sql = "CREATE TABLE IF NOT EXISTS `". $table_name."` (
+        `id` varchar(250) NOT NULL,
+        `name` varchar(250) CHARACTER SET utf8 NOT NULL,
+        `slug` varchar(250) CHARACTER SET utf8 NOT NULL,
+        `description` TEXT CHARACTER SET utf8 NOT NULL,
+        `published_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+        `project_id` varchar(250) CHARACTER SET utf8 NOT NULL,
+        PRIMARY KEY (`id`)
+    )";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);

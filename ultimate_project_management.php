@@ -46,6 +46,9 @@ include(plugin_dir_path(UPM_PLUGIN_URL).'/admin/milestones/upm_check_milestone_n
 include(plugin_dir_path(UPM_PLUGIN_URL).'/admin/deliverables/upm_deliverables_crud.php');
 include(plugin_dir_path(UPM_PLUGIN_URL).'/admin/deliverables/upm_check_deliverable_name.php');
 
+include(plugin_dir_path(UPM_PLUGIN_URL).'/admin/noticeboard/upm_noticeboard_crud.php');
+include(plugin_dir_path(UPM_PLUGIN_URL).'/admin/noticeboard/upm_check_notice_name.php');
+
 include(plugin_dir_path(UPM_PLUGIN_URL).'/admin/cron_jobs/upm_projects_cron_jobs.php');
 
 
@@ -117,7 +120,6 @@ add_action('wp_ajax_upm_work_packages_update_action', 'upm_work_packages_update_
 add_action('wp_ajax_upm_work_packages_delete_action', 'upm_work_packages_delete_callback');
 add_action('wp_ajax_upm_check_work_package_name_action', 'upm_check_work_package_name_callback');
 
-
 //tasks
 add_action('wp_ajax_upm_tasks_create_action', 'upm_tasks_create_callback');
 add_action('wp_ajax_upm_tasks_update_action', 'upm_tasks_update_callback');
@@ -135,6 +137,13 @@ add_action('wp_ajax_upm_deliverables_create_action', 'upm_deliverables_create_ca
 add_action('wp_ajax_upm_deliverables_update_action', 'upm_deliverables_update_callback');
 add_action('wp_ajax_upm_deliverables_delete_action', 'upm_deliverables_delete_callback');
 add_action('wp_ajax_upm_check_deliverable_name_action', 'upm_check_deliverable_name_callback');
+
+//noticeboard
+add_action('wp_ajax_upm_notice_create_action', 'upm_notice_create_callback');
+add_action('wp_ajax_upm_notice_read_action', 'upm_notice_read_callback');
+add_action('wp_ajax_upm_notice_update_action', 'upm_notice_update_callback');
+add_action('wp_ajax_upm_notice_delete_action', 'upm_notice_delete_callback');
+add_action('wp_ajax_upm_check_notice_name_action', 'upm_check_notice_name_callback');
 /********************************************************************************/
 
 /*Frontend***********************************************************************/
