@@ -84,6 +84,8 @@ jQuery(document).ready(function($){
         var description     = $(this).closest('tr').attr('data-description');
         var reminder        = $(this).closest('tr').attr('data-reminder');
         var partner_id      = $(this).closest('tr').attr('data-partner-id');
+        var project_id      = $(this).closest('tr').attr('data-project-id');
+        var wp_id        = $(this).closest('tr').attr('data-wp-id');
         var name            = $(this).parent('td').next('td').next('td').text();
         var partner_name    = $(this).parent('td').next('td').next('td').next('td').text();
         var start_date      = $(this).parent('td').next('td').next('td').next('td').next('td').text();
@@ -101,6 +103,8 @@ jQuery(document).ready(function($){
         $("#edit-task").find("input[name='name']").val(name);
         $("#edit-task").find("input[name='slug']").val(slug);
         $("#edit-task").find("textarea[name='description']").val(description);
+        $("#edit-task").find("input[name='project_id']").val(project_id);
+        $("#edit-task").find("input[name='wp_id']").val(wp_id);
         $("#edit-task").find("input[name='start_date']").val(start_date);
         $("#edit-task").find("input[name='end_date']").val(end_date);
         $("#edit-task").find("input[name='reminder']").val(reminder);

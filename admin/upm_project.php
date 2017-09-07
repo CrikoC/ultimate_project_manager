@@ -30,8 +30,21 @@ function upm_project() {
             <small id="msg"></small>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="col-md-12 container-fluid">
         <div id="project-container"></div>
+    </div>
+    <div class="col-md-12"><hr></div>
+    <div class="col-md-12">
+        <h2><span class="glyphicon glyphicon-pushpin"></span>
+            Noticeboard
+            <button type="button" class="btn btn-success create-notice" data-toggle="modal" data-target="#create-notice">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Add new
+            </button>
+        </h2>
+    </div>
+    <div class="col-md-12 container-fluid">
+        <div id="noticeboard-container"></div>
     </div>
 
     <!-- Create work package Modal -->
@@ -45,7 +58,7 @@ function upm_project() {
                 <div class="modal-body">
                     <form data-toggle="validator" class="createWPForm" method="POST">
                         <input type="hidden" name="manager_id" value="<?php echo $current_user->ID; ?>">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="status" value="in_progress">
                         <input type="hidden" name="project_start_date">
                         <input type="hidden" name="project_end_date">
@@ -123,7 +136,7 @@ function upm_project() {
                 <div class="modal-body">
                     <form data-toggle="validator" class="editWPForm" method="POST">
                         <input type="hidden" name="id">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="project_start_date">
                         <input type="hidden" name="project_end_date">
                         <div class="row">
@@ -201,7 +214,7 @@ function upm_project() {
                 </div>
                 <div class="modal-body">
                     <form data-toggle="validator" class="createTaskForm" method="POST">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="wp_id">
                         <input type="hidden" name="status" value="in_progress">
                         <input type="hidden" name="wp_start_date">
@@ -281,7 +294,7 @@ function upm_project() {
                     <form data-toggle="validator" class="editTaskForm" method="POST">
                         <input type="hidden" name="id">
                         <input type="hidden" name="wp_id">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="wp_start_date">
                         <input type="hidden" name="wp_end_date">
                         <div class="row">
@@ -365,7 +378,7 @@ function upm_project() {
                 </div>
                 <div class="modal-body">
                     <form data-toggle="validator" class="createMilestoneForm" method="POST">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="status" value="in_progress">
                         <input type="hidden" name="wp_id">
                         <input type="hidden" name="wp_start_date">
@@ -437,7 +450,7 @@ function upm_project() {
                     <form data-toggle="validator" class="editMilestoneForm" method="POST">
                         <input type="hidden" name="id">
                         <input type="hidden" name="wp_id">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="wp_start_date">
                         <input type="hidden" name="wp_end_date">
                         <div class="row">
@@ -512,7 +525,7 @@ function upm_project() {
                 </div>
                 <div class="modal-body">
                     <form data-toggle="validator" class="createDeliverableForm" method="POST">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="status" value="in_progress">
                         <input type="hidden" name="task_id">
                         <input type="hidden" name="task_start_date">
@@ -584,7 +597,7 @@ function upm_project() {
                 <div class="modal-body">
                     <form data-toggle="validator" class="editDeliverableForm" method="POST">
                         <input type="hidden" name="id">
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id">
                         <input type="hidden" name="task_id">
                         <input type="hidden" name="task_start_date">
                         <input type="hidden" name="task_end_date">
@@ -643,6 +656,89 @@ function upm_project() {
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn crud-edit-deliverable btn-success">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Notice Modal -->
+    <div class="modal fade" id="create-notice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Create Notice</h4>
+                </div>
+                <div class="modal-body">
+                    <form data-toggle="validator" class="createNoticeForm" method="POST">
+                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="project_id" id="project_id">
+                        <div class="row">
+                            <div class="form-group has-feedback col-xs-6">
+                                <label class="control-label" for="name">Name:</label>
+                                <input type="text" name="name" class="form-control" data-error="Please enter a name." required />
+                                <span class="glyphicon form-control-feedback"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback col-xs-6">
+                                <label class="control-label" for="slug">Slug:</label>
+                                <input type="text" name="slug" class="form-control" data-error="Please enter a valid slug." required />
+                                <span class="glyphicon form-control-feedback"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label" for="description">Description:</label>
+                            <textarea name="description" class="form-control"></textarea>
+                            <span class="glyphicon form-control-feedback"></span>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn crud-create-notice btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit Notice Modal -->
+    <div class="modal fade" id="edit-notice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Edit Notice</h4>
+                </div>
+                <div class="modal-body">
+                    <form data-toggle="validator" class="editNoticeForm" method="POST">
+                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="project_id" id="project_id">
+                        <div class="row">
+                            <div class="form-group has-feedback col-xs-6">
+                                <label class="control-label" for="name">Name:</label>
+                                <input type="text" name="name" class="form-control" data-error="Please enter a name." required />
+                                <span class="glyphicon form-control-feedback"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback col-xs-6">
+                                <label class="control-label" for="slug">Slug:</label>
+                                <input type="text" name="slug" class="form-control" data-error="Please enter a valid slug." required />
+                                <span class="glyphicon form-control-feedback"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label" for="description">Description:</label>
+                            <textarea name="description" class="form-control"></textarea>
+                            <span class="glyphicon form-control-feedback"></span>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn crud-edit-notice btn-success">Submit</button>
                         </div>
                     </form>
                 </div>

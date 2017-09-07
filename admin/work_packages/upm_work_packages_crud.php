@@ -19,18 +19,17 @@ function upm_work_packages_create_callback() {
         $wpdb->insert(
             $table_name,            //table
             [
-                'id'                => $id,
-                'name'              => $name,
-                'slug'              => $slug,
-                'description'       => $description,
-                'project_id'        => $project_id,
-                'coordinator_id'    => $coordinator_id,
-                'start_date'        => $start_date,
-                'end_date'          => $end_date,
-                'reminder'          => $reminder,
-                'status'            => 'in_progress',
-            ],                      //data
-            ['%s','%s','%s','%s','%s','%s','%s','%s','%s','%s']//data format
+                'id'                => trim($id),
+                'name'              => trim($name),
+                'slug'              => trim($slug),
+                'description'       => trim($description),
+                'project_id'        => trim($project_id),
+                'coordinator_id'    => trim($coordinator_id),
+                'start_date'        => trim($start_date),
+                'end_date'          => trim($end_date),
+                'reminder'          => trim($reminder),
+                'status'            => trim('in_progress'),
+            ]                      //data
         );
     }
 }
@@ -57,18 +56,16 @@ function upm_work_packages_update_callback() {
         $wpdb->update(
             $table_name,        //table
             [
-                'name'              => $name,
-                'slug'              => $slug,
-                'description'       => $description,
-                'project_id'        => $project_id,
-                'coordinator_id'    => $coordinator_id,
-                'start_date'        => $start_date,
-                'end_date'          => $end_date,
-                'reminder'          => $reminder,
+                'name'              => trim($name),
+                'slug'              => trim($slug),
+                'description'       => trim($description),
+                'project_id'        => trim($project_id),
+                'coordinator_id'    => trim($coordinator_id),
+                'start_date'        => trim($start_date),
+                'end_date'          => trim($end_date),
+                'reminder'          => trim($reminder),
             ],                  //data
-            ['id' => $id],      //where
-            ['%s','%s','%s','%s','%s','%s','%s','%s']//data format
-            ['%s']              //where format
+            ['id' => $id]       //where
         );
     }
 }
@@ -84,8 +81,7 @@ function upm_work_packages_delete_callback() {
     $id = $_POST["id"];
     $wpdb->delete(
         $wp_table_name,        //table
-        ['id' => $id],      //where
-        ['%s']              //where format
+        ['id' => $id]      //where
     );
 
     $tasks_table_name = $wpdb->prefix . "upm_tasks";

@@ -80,6 +80,7 @@ jQuery(document).ready(function($){
         var id              = $(this).closest('tr').attr('id');
         var slug            = $(this).closest('tr').attr('data-slug');
         var wp_id           = $(this).closest('tr').attr('data-wp-id');
+        var project_id           = $(this).closest('tr').attr('data-project-id');
         var description     = $(this).closest('tr').attr('data-description');
         var reminder        = $(this).closest('tr').attr('data-reminder');
         var coordinator_id  = $(this).closest('tr').attr('data-partner-id');
@@ -99,6 +100,7 @@ jQuery(document).ready(function($){
         $("#edit-milestone").find("input[name='name']").val(name);
         $("#edit-milestone").find("input[name='slug']").val(slug);
         $("#edit-milestone").find("input[name='wp_id']").val(wp_id);
+        $("#edit-milestone").find("input[name='project_id']").val(project_id);
         $("#edit-milestone").find("textarea[name='description']").val(description);
         $("#edit-milestone").find("input[name='mil_date']").val(mil_date);
         $("#edit-milestone").find("input[name='reminder']").val(reminder);
@@ -115,7 +117,7 @@ jQuery(document).ready(function($){
         var slug            = $("#edit-milestone").find("input[name='slug']").val();
         var description     = $("#edit-milestone").find("textarea[name='description']").val();
         var coordinator_id  = $("#edit-milestone").find("select[name='coordinator_id']").val();
-        var project_id      = $("input[name='project_id']").val();
+        var project_id      = $("#edit-milestone").find("input[name='project_id']").val();
         var wp_id           = $("#edit-milestone").find("input[name='wp_id']").val();
         var mil_date        = $("#edit-milestone").find("input[name='mil_date']").val();
         var reminder        = $("#edit-milestone").find("input[name='reminder']").val();

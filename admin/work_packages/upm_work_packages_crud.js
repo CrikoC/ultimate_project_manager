@@ -32,6 +32,9 @@ jQuery(document).ready(function($){
         var end_date        = $("#create-work-package").find("input[name='end_date']").val();
         var reminder        = $("#create-work-package").find("input[name='reminder']").val();
 
+        console.log(project_id);
+
+
         if (name != "" || slug != "" || coordinator_id != "" || start_date != "" || end_date != "") {
             $.ajax({
                 url: ajaxurl,
@@ -75,6 +78,7 @@ jQuery(document).ready(function($){
         var slug            = $(this).closest('tr').attr('data-slug');
         var description     = $(this).closest('tr').attr('data-description');
         var reminder        = $(this).closest('tr').attr('data-reminder');
+        var project_id        = $(this).closest('tr').attr('data-project-id');
         var coordinator_id  = $(this).closest('tr').attr('data-partner-id');
         var name            = $(this).parent('td').next('td').next('td').text();
         var coordinator_name= $(this).parent('td').next('td').next('td').next('td').text();
@@ -91,6 +95,7 @@ jQuery(document).ready(function($){
         $("#edit-work-package").find("select[name='coordinator_id'] option:first").attr("value", coordinator_id);
         $("#edit-work-package").find("select[name='coordinator_id'] option:first").text(coordinator_name);
 
+        $("#edit-work-package").find("input[name='project_id']").val(project_id);
     });
 
     /* Updated new Work Package */
@@ -101,7 +106,7 @@ jQuery(document).ready(function($){
         var slug            = $("#edit-work-package").find("input[name='slug']").val();
         var description     = $("#edit-work-package").find("textarea[name='description']").val();
         var coordinator_id  = $("#edit-work-package").find("select[name='coordinator_id']").val();
-        var project_id      = $("input[name='project_id']").val();
+        var project_id      = $("#edit-work-package").find("input[name='project_id']").val();
         var start_date      = $("#edit-work-package").find("input[name='start_date']").val();
         var end_date        = $("#edit-work-package").find("input[name='end_date']").val();
         var reminder        = $("#edit-work-package").find("input[name='reminder']").val();
@@ -117,9 +122,10 @@ jQuery(document).ready(function($){
                     slug:           slug,
                     description:    description,
                     coordinator_id: coordinator_id,
+                    project_id:     project_id,
                     start_date:     start_date,
                     end_date:       end_date,
-                    reminder:       reminder,
+                    reminder:       reminder
                 },
                 success: function (data) {
                     $(".modal").modal('hide');

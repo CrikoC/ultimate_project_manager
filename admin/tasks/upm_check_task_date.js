@@ -250,10 +250,14 @@ jQuery(document).ready(function($) {
         var start_date = $("#edit-task").find("input[name='start_date']").val();
         var end_date = $("#edit-task").find("input[name='end_date']").val();
 
+        console.log('reminder: ' + reminder);
+        console.log('start_date: ' + start_date);
+        console.log('end_date: ' + end_date);
+
         rem_div   = $('.editTaskForm > div:eq(3)');
         rem_input = $('.editTaskForm > div:eq(3) > input');
         rem_label = $('.editTaskForm > div:eq(3) > label');
-        rem_icons = $('.editTaskForm > div:eq(3) > .glyphicon');
+        rem_icon  = $('.editTaskForm > div:eq(3) > .glyphicon');
 
         rem_message = $('.editTaskForm > div:eq(3) > .help-block');
 
@@ -269,8 +273,8 @@ jQuery(document).ready(function($) {
             rem_div.addClass('has-error');
             rem_div.removeClass('has-success');
 
-            rem_icons.addClass('glyphicon-remove');
-            rem_icons.removeClass('glyphicon-ok');
+            rem_icon.addClass('glyphicon-remove');
+            rem_icon.removeClass('glyphicon-ok');
 
             rem_message.text('Invalid reminder.');
 
@@ -279,8 +283,8 @@ jQuery(document).ready(function($) {
             rem_div.addClass('has-success');
             rem_div.removeClass('has-error');
 
-            rem_icons.addClass('glyphicon-ok');
-            rem_icons.removeClass('glyphicon-remove');
+            rem_icon.addClass('glyphicon-ok');
+            rem_icon.removeClass('glyphicon-remove');
 
             rem_message.text('Reminder ok!');
 

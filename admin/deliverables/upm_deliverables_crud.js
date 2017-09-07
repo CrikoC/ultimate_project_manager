@@ -84,6 +84,7 @@ jQuery(document).ready(function($){
         var description     = $(this).closest('tr').attr('data-description');
         var reminder        = $(this).closest('tr').attr('data-reminder');
         var task_id         = $(this).closest('tr').attr('data-task-id');
+        var project_id        = $(this).closest('tr').attr('data-project-id');
         var partner_id      = $(this).closest('tr').attr('data-partner-id');
         var name            = $(this).parent('td').next('td').next('td').text();
         var partner_name    = $(this).parent('td').next('td').next('td').next('td').text();
@@ -101,6 +102,7 @@ jQuery(document).ready(function($){
         $("#edit-deliverable").find("input[name='name']").val(name);
         $("#edit-deliverable").find("input[name='slug']").val(slug);
         $("#edit-deliverable").find("input[name='task_id']").val(task_id);
+        $("#edit-deliverable").find("input[name='project_id']").val(project_id);
         $("#edit-deliverable").find("textarea[name='description']").val(description);
         $("#edit-deliverable").find("input[name='del_date']").val(del_date);
         $("#edit-deliverable").find("input[name='reminder']").val(reminder);
@@ -117,9 +119,9 @@ jQuery(document).ready(function($){
         var slug        = $("#edit-deliverable").find("input[name='slug']").val();
         var description = $("#edit-deliverable").find("textarea[name='description']").val();
         var partner_id  = $("#edit-deliverable").find("select[name='partner_id']").val();
-        var project_id  = $("input[name='project_id']").val();
+        var project_id  = $("#edit-deliverable").find("input[name='project_id']").val();
         var task_id     = $("#edit-deliverable").find("input[name='task_id']").val();
-        var mil_date    = $("#edit-deliverable").find("input[name='del_date']").val();
+        var del_date    = $("#edit-deliverable").find("input[name='del_date']").val();
         var reminder    = $("#edit-deliverable").find("input[name='reminder']").val();
         var completed   = $("#edit-deliverable").find("input[name='completed']").val();
         if (name != "" || slug != "") {
@@ -136,7 +138,7 @@ jQuery(document).ready(function($){
                     partner_id:     partner_id,
                     project_id:     project_id,
                     task_id:        task_id,
-                    mil_date:       mil_date,
+                    del_date:       del_date,
                     reminder:       reminder,
                     status:         status,
                     completed:      completed

@@ -81,7 +81,7 @@ function upm_users_read_callback() {
                     echo '</table>';
                     echo '<div class="card-block text-center">';
                         echo "<button type='button' class='btn btn-primary edit-user' data-toggle='modal' data-target='#edit-user'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button> ";
-                        echo "<button type='button' class='btn btn-warning edit-user-password' data-toggle='modal' data-target='#edit-user-password'><span class='glyphicon glyphicon-lock' aria-hidden='true'></span></span></button> ";
+                        //echo "<button type='button' class='btn btn-warning edit-user-password' data-toggle='modal' data-target='#edit-user-password'><span class='glyphicon glyphicon-lock' aria-hidden='true'></span></span></button> ";
                         echo "<button type='button' class='btn btn-danger remove-user' data-toggle='modal' data-target='#remove-user'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>";
                     echo '</div>';
                 echo '</div>';
@@ -116,18 +116,18 @@ function upm_users_update_callback() {
     update_user_meta($user_id, 'cellphone', $cellphone);
 }
 
-function upm_users_update_password_callback() {
-    $user_id    = $_POST['user_id'];
-    $new_pass = $_POST['new_pass'];
-    $repeat_new_pass = $_POST['repeat_new_pass'];
-
-    /* Update user password. */
-    if (!empty($new_pass) && !empty($repeat_new_pass)) {
-        if ($new_pass == $repeat_new_pass) {
-            wp_update_user(['ID' => $user_id, 'user_pass' => $new_pass]);
-        }
-    }
-}
+//function upm_users_update_password_callback() {
+//    $user_id = $_POST['user_id'];
+//    $new_pass = $_POST['new_pass'];
+//    $repeat_new_pass = $_POST['repeat_new_pass'];
+//
+//    /* Update user password. */
+//    if (!empty($new_pass) && !empty($repeat_new_pass)) {
+//        if ($new_pass == $repeat_new_pass) {
+//            wp_update_user(['ID' => $user_id, 'user_pass' => $new_pass]);
+//        }
+//    }
+//}
 /***********************************************/
 
 
@@ -136,6 +136,7 @@ function upm_users_update_password_callback() {
 /***********************************************/
 function upm_users_delete_callback() {
     $user_id = $_POST['user_id'];
+    require_once(ABSPATH.'wp-admin/includes/user.php');
     wp_delete_user($user_id);
 }
 /***********************************************/

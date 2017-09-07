@@ -83,12 +83,13 @@ function upm_project_read_callback() {
                 </tr>
                 <?php
                 $workpackages_table = $wpdb->prefix."upm_work_packages";
-                $workpackages = $wpdb->get_results("SELECT * FROM $workpackages_table WHERE project_id = '$project->id'");
+                $workpackages = $wpdb->get_results("SELECT * FROM $workpackages_table WHERE project_id = '$project->id' ORDER BY start_date ASC");
                 foreach($workpackages as $workpackage) { ?>
                     <tr class="alert-info"
                         id="<?php echo $workpackage->id; ?>"
                         data-slug="<?php echo $workpackage->slug; ?>"
                         data-partner-id="<?php echo $workpackage->coordinator_id; ?>"
+                        data-project-id="<?php echo $project->id; ?>"
                         data-description="<?php echo $workpackage->description; ?>"
                         data-reminder="<?php echo date('Y-m-d', strtotime($workpackage->reminder)); ?>"
                         data-project-start-date="<?php echo $project->start_date;?>"
@@ -168,12 +169,13 @@ function upm_project_read_callback() {
                     </tr>
                     <?php
                     $milestones_table = $wpdb->prefix."upm_milestones";
-                    $milestones = $wpdb->get_results("SELECT * FROM $milestones_table WHERE wp_id = '$workpackage->id'");
+                    $milestones = $wpdb->get_results("SELECT * FROM $milestones_table WHERE wp_id = '$workpackage->id' ORDER BY mil_date ASC");
                     foreach($milestones as $milestone) { ?>
                         <tr class="alert-info"
                             id="<?php echo $milestone->id; ?>"
                             data-slug="<?php echo $milestone->slug; ?>"
                             data-wp-id="<?php echo $milestone->id; ?>"
+                            data-project-id="<?php echo $project->id; ?>"
                             data-partner-id="<?php echo $milestone->coordinator_id; ?>"
                             data-description="<?php echo $milestone->description; ?>"
                             data-reminder="<?php echo date('Y-m-d', strtotime($milestone->reminder)); ?>"
@@ -237,12 +239,14 @@ function upm_project_read_callback() {
                     <?php } ?>
                     <?php
                     $tasks_table = $wpdb->prefix."upm_tasks";
-                    $tasks = $wpdb->get_results("SELECT * FROM $tasks_table WHERE wp_id = '$workpackage->id'");
+                    $tasks = $wpdb->get_results("SELECT * FROM $tasks_table WHERE wp_id = '$workpackage->id' ORDER BY start_date ASC");
                     foreach($tasks as $task) { ?>
                         <tr class="alert-warning"
                             id="<?php echo $task->id; ?>"
                             data-slug="<?php echo $task->slug; ?>"
                             data-partner-id="<?php echo $task->partner_id; ?>"
+                            data-project-id="<?php echo $project->id; ?>"
+                            data-wp-id="<?php echo $workpackage->id; ?>"
                             data-description="<?php echo $task->description; ?>"
                             data-reminder="<?php echo date('Y-m-d', strtotime($task->reminder)); ?>"
                             data-wp-start-date="<?php echo $workpackage->start_date;?>"
@@ -315,13 +319,14 @@ function upm_project_read_callback() {
                             <!----------- END ------------>
                         </tr>
                         <?php $deliverables_table = $wpdb->prefix."upm_deliverables";
-                        $deliverables = $wpdb->get_results("SELECT * FROM $deliverables_table WHERE task_id = '$task->id'");
+                        $deliverables = $wpdb->get_results("SELECT * FROM $deliverables_table WHERE task_id = '$task->id' ORDER BY del_date ASC");
                         foreach($deliverables as $deliverable) { ?>
                             <tr class="alert-warning"
                                 id="<?php echo $deliverable->id; ?>"
                                 data-slug="<?php echo $deliverable->slug; ?>"
                                 data-task-id="<?php echo $task->id; ?>"
                                 data-partner-id="<?php echo $deliverable->partner_id; ?>"
+                                data-project-id="<?php echo $project->id; ?>"
                                 data-description="<?php echo $deliverable->description; ?>"
                                 data-reminder="<?php echo date('Y-m-d', strtotime($deliverable->reminder)); ?>"
                                 data-task-start-date="<?php echo $task->start_date;?>"

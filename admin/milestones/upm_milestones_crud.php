@@ -19,19 +19,18 @@
         $wpdb->insert(
             $table_name,            //table
             [
-                'id'                => $id,
-                'name'              => $name,
-                'slug'              => $slug,
-                'description'       => $description,
-                'project_id'        => $project_id,
-                'wp_id'             => $wp_id,
-                'coordinator_id'    => $coordinator_id,
-                'mil_date'          => $mil_date,
-                'reminder'          => $reminder,
-                'status'            => 'in_progress',
+                'id'                => trim($id),
+                'name'              => trim($name),
+                'slug'              => trim($slug),
+                'description'       => trim($description),
+                'project_id'        => trim($project_id),
+                'wp_id'             => trim($wp_id),
+                'coordinator_id'    => trim($coordinator_id),
+                'mil_date'          => trim($mil_date),
+                'reminder'          => trim($reminder),
+                'status'            => trim('in_progress'),
                 'completed'         => 0
-            ],                      //data
-            ['%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s']//data format
+            ]                      //data
         );
     }
 }
@@ -64,19 +63,17 @@ function upm_milestones_update_callback() {
         $wpdb->update(
             $table_name,        //table
             [
-                'name'              => $name,
-                'slug'              => $slug,
-                'description'       => $description,
-                'project_id'        => $project_id,
-                'wp_id'             => $wp_id,
-                'coordinator_id'    => $coordinator_id,
-                'mil_date'          => $mil_date,
-                'reminder'          => $reminder,
-                'completed'         => $completed
+                'name'              => trim($name),
+                'slug'              => trim($slug),
+                'description'       => trim($description),
+                'project_id'        => trim($project_id),
+                'wp_id'             => trim($wp_id),
+                'coordinator_id'    => trim($coordinator_id),
+                'mil_date'          => trim($mil_date),
+                'reminder'          => trim($reminder),
+                'completed'         => trim($completed)
             ],                  //data
-            ['id' => $id],      //where
-            ['%s','%s','%s','%s','%s','%s','%s','%s','%s','%s']//data format
-            ['%s']              //where format
+            ['id' => $id]      //where
         );
     }
 }
@@ -92,8 +89,7 @@ function upm_milestones_delete_callback() {
     $id = $_POST["id"];
     $wpdb->delete(
         $table_name,        //table
-        ['id' => $id],      //where
-        ['%s']              //where format
+        ['id' => $id]      //where
     );
 }
 /***********************************************/

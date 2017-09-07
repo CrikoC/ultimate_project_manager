@@ -15,8 +15,8 @@ function upm_admin_enqueue() {
     wp_register_style('upm_jquery_ui_css', plugins_url('/admin/_includes/css/jquery-ui.css', UPM_PLUGIN_URL));
     wp_enqueue_style('upm_jquery_ui_css');
 
-    wp_register_script('ump_md5_js', plugins_url('/admin/_includes/js/jquery.md5.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
-    wp_enqueue_script('ump_md5_js');
+    wp_register_script('upm_md5_js', plugins_url('/admin/_includes/js/jquery.md5.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
+    wp_enqueue_script('upm_md5_js');
     
     //projects
     wp_register_script('upm_projects_crud_js', plugins_url('/admin/projects/upm_projects_crud.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
@@ -63,7 +63,7 @@ function upm_admin_enqueue() {
     wp_enqueue_script('upm_generate_task_slug_js');
 
     wp_register_script('upm_check_task_name_js', plugins_url('/admin/tasks/upm_check_task_name.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
-    wp_enqueue_script('ump_check_task_name_js');
+    wp_enqueue_script('upm_check_task_name_js');
 
     wp_register_script('upm_check_task_date_js', plugins_url('/admin/tasks/upm_check_task_date.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
     wp_enqueue_script('upm_check_task_date_js');
@@ -93,6 +93,17 @@ function upm_admin_enqueue() {
 
     wp_register_script('upm_check_deliverable_date_js', plugins_url('/admin/deliverables/upm_check_deliverable_date.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
     wp_enqueue_script('upm_check_deliverable_date_js');
+
+
+    //Noticeboard
+    wp_register_script('upm_noticeboard_crud_js', plugins_url('/admin/noticeboard/upm_noticeboard_crud.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
+    wp_enqueue_script('upm_noticeboard_crud_js');
+
+    wp_register_script('upm_generate_notice_slug_js', plugins_url('/admin/noticeboard/upm_generate_notice_slug.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
+    wp_enqueue_script('upm_generate_notice_slug_js');
+
+    wp_register_script('upm_check_notice_name_js', plugins_url('/admin/noticeboard/upm_check_notice_name.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);
+    wp_enqueue_script('upm_check_notice_name_js');
 
     //Cron jobs
     wp_register_script('upm_projects_cron_jobs_js', plugins_url('/admin/cron_jobs/upm_projects_cron_jobs.js', UPM_PLUGIN_URL), ['jquery'], '20172104', true);

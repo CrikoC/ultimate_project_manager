@@ -19,19 +19,18 @@ function upm_deliverables_create_callback() {
         $wpdb->insert(
             $table_name,            //table
             [
-                'id'                => $id,
-                'name'              => $name,
-                'slug'              => $slug,
-                'description'       => $description,
-                'project_id'        => $project_id,
-                'task_id'           => $task_id,
-                'partner_id'        => $partner_id,
-                'del_date'          => $del_date,
-                'reminder'          => $reminder,
-                'status'            => 'in_progress',
+                'id'                => trim($id),
+                'name'              => trim($name),
+                'slug'              => trim($slug),
+                'description'       => trim($description),
+                'project_id'        => trim($project_id),
+                'task_id'           => trim($task_id),
+                'partner_id'        => trim($partner_id),
+                'del_date'          => trim($del_date),
+                'reminder'          => trim($reminder),
+                'status'            => trim('in_progress'),
                 'completed'         => 0
-            ],                      //data
-            ['%s','%s','%s','%s','%s','%s','%s','%s','%s','%s', '%s']//data format
+            ]                      //data
         );
     }
 
@@ -83,19 +82,18 @@ function upm_deliverables_update_callback() {
         $wpdb->update(
             $table_name,        //table
             [
-                'name'              => $name,
-                'slug'              => $slug,
-                'description'       => $description,
-                'project_id'        => $project_id,
-                'task_id'           => $task_id,
-                'partner_id'        => $partner_id,
-                'del_date'          => $del_date,
-                'reminder'          => $reminder,
-                'completed'         => $completed
+                'name'              => trim($name),
+                'slug'              => trim($slug),
+                'description'       => trim($description),
+                'project_id'        => trim($project_id),
+                'task_id'           => trim($task_id),
+                'partner_id'        => trim($partner_id),
+                'del_date'          => trim($del_date),
+                'reminder'          => trim($reminder),
+                'completed'         => trim($completed)
             ],                  //data
-            ['id' => $id],      //where
-            ['%s','%s','%s','%s','%s','%s','%s','%s', '$s']//data format
-            ['%s']              //where format
+            ['id' => $id]      //where
+             //where format
         );
     }
 }
@@ -111,8 +109,7 @@ function upm_deliverables_delete_callback() {
     $id = $_POST["id"];
     $wpdb->delete(
         $table_name,        //table
-        ['id' => $id],      //where
-        ['%s']              //where format
+        ['id' => $id]      //where
     );
 }
 /***********************************************/

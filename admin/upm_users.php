@@ -173,38 +173,38 @@ function upm_users() { ?>
         </div>
     </div>
 
-    <!-- Edit password Modal -->
-    <div class="modal fade" id="edit-user-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        <span class='glyphicon glyphicon-lock' aria-hidden='true'></span> Edit password
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <form data-toggle="validator" class="editPasswordForm" method="POST">
-                        <input type="hidden" name="user_id">
-                        <div class="form-group has-feedback">
-                            <label class="control-label" for="new_pass">Password:</label>
-                            <input type="password" title="new_pass" name="new_pass" class="form-control" data-error="Please enter a valid password." required />
-                            <span class="glyphicon form-control-feedback"></span>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label class="control-label" for="repeat_new_pass">Repeat Password:</label>
-                            <input type="password" title="repeat_new_pass" name="repeat_new_pass" class="form-control" data-error="You did not repeat the password correctly ." data-match="password" required />
-                            <span class="glyphicon form-control-feedback"></span>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn crud-edit-user-password btn-success">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Edit password Modal -->
+<!--    <div class="modal fade" id="edit-user-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+<!--        <div class="modal-dialog" role="document">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+<!--                    <h4 class="modal-title" id="myModalLabel">-->
+<!--                        <span class='glyphicon glyphicon-lock' aria-hidden='true'></span> Edit password-->
+<!--                    </h4>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form data-toggle="validator" class="editPasswordForm" method="POST">-->
+<!--                        <input type="hidden" name="user_id">-->
+<!--                        <div class="form-group has-feedback">-->
+<!--                            <label class="control-label" for="new_pass">Password:</label>-->
+<!--                            <input type="password" title="new_pass" name="new_pass" class="form-control" data-error="Please enter a valid password." required />-->
+<!--                            <span class="glyphicon form-control-feedback"></span>-->
+<!--                            <div class="help-block with-errors"></div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group has-feedback">-->
+<!--                            <label class="control-label" for="repeat_new_pass">Repeat Password:</label>-->
+<!--                            <input type="password" title="repeat_new_pass" name="repeat_new_pass" class="form-control" data-error="You did not repeat the password correctly ." data-match="password" required />-->
+<!--                            <span class="glyphicon form-control-feedback"></span>-->
+<!--                            <div class="help-block with-errors"></div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <button type="submit" class="btn crud-edit-user-password btn-success">Update</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <?php
 }

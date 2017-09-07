@@ -104,12 +104,14 @@ jQuery(document).ready(function($) {
         var wp_end_date = $(this).closest('tr').attr('data-wp-end-date');
 
         $("#edit-milestone").find("input[name='wp_start_date']").val(wp_start_date);
-        $("#create-milestone").find("input[name='wp_end_date']").val(wp_end_date);
+        $("#edit-milestone").find("input[name='wp_end_date']").val(wp_end_date);
+
+
     });
     
     $("#edit-milestone").find("input[name='mil_date']").change(check);
     function check() {
-        var mil_date = $("#edit-milestone").find("input[name='mil']").val();
+        var mil_date = $("#edit-milestone").find("input[name='mil_date']").val();
 
         var wp_start_date = $("#edit-milestone").find("input[name='wp_start_date']").val();
         var wp_end_date = $("#edit-milestone").find("input[name='wp_end_date']").val();
@@ -119,7 +121,7 @@ jQuery(document).ready(function($) {
         label      = $('.editMilestoneForm > div:eq(2) > label');
         icons      = $('.editMilestoneForm > div:eq(2) > .glyphicon');
 
-        message    = $('.editMilestoneForm > div:eq(2) > div:eq(1) > .help-block');
+        message    = $('.editMilestoneForm > div:eq(2) > .help-block');
 
         submit     = $('.editMilestoneForm .btn');
 

@@ -245,7 +245,6 @@ jQuery(document).ready(function($) {
 
     $("#edit-work-package").find("input[name='reminder']").change(check_rem);
     function check_rem() {
-
         var reminder = $("#edit-work-package").find("input[name='reminder']").val();
         var start_date = $("#edit-work-package").find("input[name='start_date']").val();
         var end_date = $("#edit-work-package").find("input[name='end_date']").val();

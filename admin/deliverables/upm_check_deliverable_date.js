@@ -104,10 +104,10 @@ jQuery(document).ready(function($) {
         var task_end_date = $(this).closest('tr').attr('data-task-end-date');
 
         $("#edit-deliverable").find("input[name='task_start_date']").val(task_start_date);
-        $("#create-deliverable").find("input[name='task_end_date']").val(task_end_date);
+        $("#edit-deliverable").find("input[name='task_end_date']").val(task_end_date);
     });
 
-    $("#edit-deliverable").find("input[name='end_date']").change(check);
+    $("#edit-deliverable").find("input[name='del_date']").change(check);
     function check() {
         var del_date = $("#edit-deliverable").find("input[name='del_date']").val();
 
@@ -120,14 +120,14 @@ jQuery(document).ready(function($) {
         label      = $('.editDeliverableForm > div:eq(2) > label');
         icons      = $('.editDeliverableForm > div:eq(2) > .glyphicon');
 
-        message    = $('.editDeliverableForm > div:eq(2) > div:eq(1) > .help-block');
+        message    = $('.editDeliverableForm > div:eq(2) > .help-block');
 
         submit     = $('.editDeliverableForm .btn');
 
         if(
             (!del_date) ||
-            (new Date(del_date).getTime() < new Date(task_start_date).getTime()) ||
-            (new Date(del_date).getTime() > new Date(task_end_date).getTime())
+            (new Date(del_date) < new Date(task_start_date)) ||
+            (new Date(del_date) > new Date(task_end_date))
         ) {
             div.addClass('has-error');
             div.removeClass('has-success');

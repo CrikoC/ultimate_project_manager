@@ -140,52 +140,52 @@ jQuery(document).ready(function($){
 
 
     /* Edit user Password */
-    $("body").on("click",".edit-user-password",function(){
-        var id = $(this).parent().parent().parent().find('#user_id').val();
-        $("#edit-user-password").find("input[name='user_id']").val(id);
+    // $("body").on("click",".edit-user-password",function(){
+    //     var id = $(this).parent().parent().parent().find('#user_id').val();
+    //     $("#edit-user-password").find("input[name='user_id']").val(id);
+    //
+    // });
 
-    });
-
-    /* Updated new partner */
-    $(".crud-edit-user-password").click(function(e){
-        e.preventDefault();
-        var id =  $("#edit-user-password").find("input[name='user_id']").val();
-        var user_pass = $("#edit-user-password").find("input[name='new_pass']").val();
-        var repeat_new_pass  = $("#edit-user-password").find("input[name='repeat_new_pass']").val();
-
-        if (user_pass != "" || repeat_new_pass != "") {
-            $.ajax({
-                url: ajaxurl,
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    action: 'upm_users_update_password_action',
-                    id: id,
-                    user_pass: user_pass,
-                    repeat_new_pass: repeat_new_pass
-
-                },
-                success: function (data) {
-                    $(".modal").modal('hide');
-                    get_users();
-                    msgSuccess = '<div class="alert alert-success">User password Updated Successfully.</div>';
-                    msg.after(msgSuccess);
-                    $('.alert').delay(2000).fadeOut(2000);
-                },
-                error: function (err) {
-                    console.log(err);
-                    msgDanger = '<div class="alert alert-danger">error</div>';
-                    msg.after(msgDanger);
-                    $('.alert').delay(2000).fadeOut(2000);
-                }
-            });
-        }
-    });
+    // /* Updated new partner */
+    // $(".crud-edit-user-password").click(function(e){
+    //     e.preventDefault();
+    //     var id =  $("#edit-user-password").find("input[name='user_id']").val();
+    //     var new_pass = $("#edit-user-password").find("input[name='new_pass']").val();
+    //     var repeat_new_pass  = $("#edit-user-password").find("input[name='repeat_new_pass']").val();
+    //
+    //     if (new_pass != "" || repeat_new_pass != "") {
+    //         $.ajax({
+    //             url: ajaxurl,
+    //             type: 'POST',
+    //             dataType: 'json',
+    //             data: {
+    //                 action: 'upm_users_update_password_action',
+    //                 id: id,
+    //                 new_pass: new_pass,
+    //                 repeat_new_pass: repeat_new_pass
+    //
+    //             },
+    //             success: function (data) {
+    //                 $(".modal").modal('hide');
+    //                 get_users();
+    //                 msgSuccess = '<div class="alert alert-success">User password Updated Successfully.</div>';
+    //                 msg.after(msgSuccess);
+    //                 $('.alert').delay(2000).fadeOut(2000);
+    //             },
+    //             error: function (err) {
+    //                 console.log(err);
+    //                 msgDanger = '<div class="alert alert-danger">error</div>';
+    //                 msg.after(msgDanger);
+    //                 $('.alert').delay(2000).fadeOut(2000);
+    //             }
+    //         });
+    //     }
+    // });
 
 
     /* Remove user */
     $("body").on("click",".remove-user",function(){
-        var id = $(this).parent().parent().parent().attr('id');
+        var id = $(this).parent().parent().parent().find('#user_id').val();
         $.ajax({
             url:        ajaxurl,
             type:       'POST',

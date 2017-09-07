@@ -1,22 +1,22 @@
 
 jQuery(document).ready(function($) {
-    var nameCreateInput = $("#create-task").find("input[name='name']");
+    var nameCreateInput = $("#create-notice").find("input[name='name']");
     nameCreateInput.keyup(function() {
         $.ajax({
             type: "GET",
             url: ajaxurl,
             dataType: 'html',
             data: {
-                action: 'upm_check_task_name_action',
+                action: 'upm_check_notice_name_action',
                 name: nameCreateInput.val()
             },
             success: function (data) {
-                $div = $('.createTaskForm > div:first > div:first');
-                $input = $('.createTaskForm > div:first > div:first > input');
-                $label = $('.createTaskForm > div:first > div:first > label');
-                $icons = $('.createTaskForm > div:first > div:first > .glyphicon');
-                $message = $('.createTaskForm > div:first > div:first > .help-block');
-                $submit = $('.createTaskForm .btn');
+                $div = $('.createNoticeForm > div:first > div:first');
+                $input = $('.createNoticeForm > div:first > div:first > input');
+                $label = $('.createNoticeForm > div:first > div:first > label');
+                $icons = $('.createNoticeForm > div:first > div:first > .glyphicon');
+                $message = $('.createNoticeForm > div:first > div:first > .help-block');
+                $submit = $('.createNoticeForm .btn');
                 //Custom Form validation using bottstrap styles
 
                 //If there is no entry in database and the input value is not empty
@@ -55,23 +55,23 @@ jQuery(document).ready(function($) {
         });
     });
 
-    var nameEditInput = $("#edit-task").find("input[name='name']");
+    var nameEditInput = $("#edit-notice").find("input[name='name']");
     nameEditInput.keyup(function() {
         $.ajax({
             type: "GET",
             url: ajaxurl,
             dataType: 'html',
             data: {
-                action: 'upm_check_task_name_action',
+                action: 'upm_check_notice_name_action',
                 name: nameEditInput.val()
             },
             success: function (data) {
-                $div = $('.editTaskForm > div:first > div:first');
-                $input = $('.editTaskForm > div:first > div:first > input');
-                $label = $('.editTaskForm > div:first > div:first > label');
-                $icons = $('.editTaskForm > div:first > div:first > .glyphicon');
-                $message = $('.editTaskForm > div:first > div:first > .help-block');
-                $submit = $('.editTaskForm .btn');
+                $div = $('.editNoticeForm > div:first > div:first');
+                $input = $('.editNoticeForm > div:first > div:first > input');
+                $label = $('.editNoticeForm > div:first > div:first > label');
+                $icons = $('.editNoticeForm > div:first > div:first > .glyphicon');
+                $message = $('.editNoticeForm > div:first > div:first > .help-block');
+                $submit = $('.editNoticeForm .btn');
                 //Custom Form validation using bottstrap styles
 
                 //If there is no entry in database and the input value is not empty
