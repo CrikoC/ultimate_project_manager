@@ -100,9 +100,27 @@ function upm_custom_update_function() {
             exit;
         }
     }
+
+    if (isset($_POST['delete'])) {
+        if ( is_user_logged_in() && ! empty( $_GET['DeleteMyAccount'] ) ) {
+            add_action( 'init', 'remove_logged_in_user' );
+        }
+
+        function remove_logged_in_user() {
+            // Verify that the user intended to take this action.
+            if ( ! wp_verify_nonce( 'delete_account' ) ) {
+                return;
+            }
+
+            require_once(ABSPATH.'wp-admin/includes/user.php' );
+            $current_user = wp_get_current_user();
+            wp_delete_user( $current_user->ID );
+        }
+    }
+
     ?>
     <h1>Edit Profile</h1>
-    <a href="<?php echo home_url('edit_profile'); ?>">Edit Password</a>
+    <a href="<?php echo home_url('edit_password'); ?>">Edit Password</a>
     <form action="<?php the_permalink(); ?>" method="post" enctype="multipart/form-data">
         <hr>
         <div>
@@ -129,6 +147,9 @@ function upm_custom_update_function() {
         <input type="file" name="user_image" id="user_image" />
         <hr>
         <input type="submit" id="update" name="update" value="Save Changes">
+        <a href="<?php echo home_url('profile'); ?>">Back to Profile</a>
+        <hr>
+        <input type="submit" value="Remove account" name="delete" id="delete">
     </form>
     <?php
 }

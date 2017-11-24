@@ -28,7 +28,7 @@ function upm_edit_password_content($atts, $content = null) {
 function upm_password_reset( $current_user, $new_pass ) {
     global $current_user;
     wp_get_current_user();
-    wp_set_password($new_pass, $current_user->ID);
+    wp_update_user(['ID' => $current_user->ID, 'user_pass' => $new_pass]);
     wp_redirect(home_url('profile'));
     exit;
 }
